@@ -105,8 +105,8 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
           >
             <h2>Tasa de Fallecimientos</h2>
             <CircularProgressbar
-              value={recoveryRate.toFixed(2)}
-              text={`${recoveryRate.toFixed(2)}%`}
+              value={fatalityRate.toFixed(2)}
+              text={`${fatalityRate.toFixed(2)}%`}
               strokeWidth={10}
               styles={buildStyles({
                 pathColor: "#008000",
@@ -123,8 +123,8 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
           >
             <h2>Tasa de Recuperación</h2>
             <CircularProgressbar
-              value={fatalityRate.toFixed(2)}
-              text={`${fatalityRate.toFixed(2)}%`}
+              value={recoveryRate.toFixed(2)}
+              text={`${recoveryRate.toFixed(2)}%`}
               strokeWidth={10}
               styles={buildStyles({
                 pathColor: "#ff0000",
