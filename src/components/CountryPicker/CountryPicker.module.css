@@ -1,0 +1,13 @@
+.formControl {
+  width: 100%;
+  margin-bottom: 30px !important;
+  margin: 1px;
+  font-size: larger !important;
+}
+
+.InputLabel {
+  font-size: larger !important;
+}
+.NativeSelect {
+  font-size: larger !important;
+}
