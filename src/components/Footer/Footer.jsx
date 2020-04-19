@@ -18,7 +18,7 @@ class Footer extends Component {
             </span>
             {"\n"}
             &copy; All rights reserved 2020
-            {"\n"} Ernesto Galdámez
+            {"\n"} ErnestoGaldamez
           </span>
         </div>
       </div>
