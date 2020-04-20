@@ -13,9 +13,9 @@ Check out the live demo in the link.
 
 # Screenshots
 
-![Screenshots](/src/imagesscreencapture.png?raw=true "Home Screen")
+![Screenshots](/src/images/screencapture.png?raw=true "Home Screen")
 
-![Screenshots 2](/src/imagesscreencapture2.png?raw=true "Updated stats when country is selected")
+![Screenshots 2](/src/images/screencapture2.png?raw=true "Updated stats when country is selected")
 
 ## Usage
 
