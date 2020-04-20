@@ -28,11 +28,12 @@ class App extends React.Component {
     const { data, country } = this.state;
     return (
       <div>
-        <TitleComponent title="👾COVID-19 Tracker" />
+        <TitleComponent title="COVID-19 Tracker React.js App" />
         <div className={styles.container}>
           <img className={styles.image} src={coronaImage} alt="Covid 19" />
-          <Cards data={data} />
           <CountryPicker handleCountryChange={this.handleCountryChange} />
+          <Cards data={data} />
+
           <Chart data={data} country={country} />
         </div>
         <div>

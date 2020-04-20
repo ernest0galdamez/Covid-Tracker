@@ -103,7 +103,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             alignContent="center"
             style={{ textAlign: "center", color: "#008000" }}
           >
-            <h2>Tasa de Fallecimientos</h2>
+            <h2>Tasa de Mortalidad</h2>
             <CircularProgressbar
               value={fatalityRate.toFixed(2)}
               text={`${fatalityRate.toFixed(2)}%`}

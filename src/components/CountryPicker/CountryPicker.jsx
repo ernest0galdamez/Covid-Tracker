@@ -23,13 +23,23 @@ const CountryPicker = ({ handleCountryChange }) => {
           defaultValue=""
           onChange={(e) => handleCountryChange(e.target.value)}
         >
-          <option value="">Global</option>
+          <option value="">Seleccione su País</option>
           {fetchedCountries.map((country, i) => (
             <option key={i} value={country}>
               {country}
             </option>
           ))}
         </NativeSelect>
+        <p className={styles.text}>
+          Data is sourced from{" "}
+          <a
+            href="https://github.com/CSSEGISandData/COVID-19"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Johns Hopkins CSSE
+          </a>
+        </p>
       </FormControl>
     </div>
   );
