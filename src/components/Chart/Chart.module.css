@@ -3,6 +3,7 @@
   justify-content: center;
   width: 65%;
   height: 25%;
+  white-space: pre;
 }
 .canvas {
   height: 300px !important;
@@ -11,5 +12,6 @@
 @media only screen and (max-width: 770px) {
   .container {
     width: 100%;
+    white-space: pre;
   }
 }

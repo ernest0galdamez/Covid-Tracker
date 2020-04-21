@@ -100,7 +100,6 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             item
             xs={12}
             md={4}
-            alignContent="center"
             style={{ textAlign: "center", color: "#008000" }}
           >
             <h2>Tasa de Mortalidad</h2>
@@ -118,7 +117,6 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             item
             xs={12}
             md={4}
-            alignContent="center"
             style={{ textAlign: "center", color: "#ff0000" }}
           >
             <h2>Tasa de Recuperación</h2>

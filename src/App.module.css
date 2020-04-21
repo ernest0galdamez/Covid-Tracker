@@ -1,16 +1,22 @@
 body {
-  background-color: rgb(250, 250, 250);
+  background-color: white;
 }
 
 .container {
   display: flex;
   align-items: center;
   flex-direction: column;
+  white-space: pre;
 }
 
 .image {
   width: 370px;
   margin-top: 50px;
+}
+.imageJuntos {
+  width: 370px;
+  margin-top: 50px;
+  padding-bottom: 20px;
 }
 
 @media only screen and (max-width: 770px) {
@@ -20,6 +26,10 @@ body {
 
   .image {
     width: 100%;
+  }
+  .imageJuntos {
+    width: 100%;
+    padding-bottom: 20px;
   }
 }
 .footer {

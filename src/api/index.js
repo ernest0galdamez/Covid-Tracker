@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const url = "https://covid19.mathdro.id/api";
+const trendUrl = "https://corona.lmao.ninja/v2/historical";
 
 export const fetchData = async (country) => {
   let changedUrl = url;
@@ -22,6 +23,60 @@ export const fetchData = async (country) => {
     };
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const fetchTrend = async (country) => {
+  var regExpr = /[*]/g;
+  country = country.replace(regExpr, "");
+  let changedTrendUrl = trendUrl;
+
+  if (country) {
+    //changedTrendUrl = `${trendUrl}/${country}/status/confirmed?from=${startDate}&to=${endDate}`;
+    changedTrendUrl = `${trendUrl}/${country}?lastdays=45`;
+    try {
+      const dataTrend = await axios.get(changedTrendUrl);
+      const casesData = dataTrend.data.timeline.cases;
+      const recoveredData = dataTrend.data.timeline.recovered;
+      const casesArray = [];
+      const recoveredArray = [];
+
+      Object.entries(casesData).forEach(([key, value]) => {
+        var f = new Date(key);
+        let day = f.getDate();
+        let month = f.getMonth() + 1;
+        let year = f.getFullYear();
+
+        var newDate = "";
+        if (month < 10) {
+          newDate = `${day}/0${month}/${year}`;
+        } else {
+          newDate = `${day}/${month}/${year}`;
+        }
+        casesArray.push({ date: newDate, cases: value });
+      });
+
+      Object.entries(recoveredData).forEach(([key, value]) => {
+        var f = new Date(key);
+        let day = f.getDate();
+        let month = f.getMonth() + 1;
+        let year = f.getFullYear();
+
+        var newDate = "";
+        if (month < 10) {
+          newDate = `${day}/0${month}/${year}`;
+        } else {
+          newDate = `${day}/${month}/${year}`;
+        }
+        recoveredArray.push({ date: newDate, cases: value });
+      });
+
+      const arr = { cases: casesArray, recovered: recoveredArray };
+      //console.log(arr);
+      return arr;
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

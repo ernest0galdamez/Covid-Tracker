@@ -3,14 +3,16 @@ import React from "react";
 import { Cards, Chart, CountryPicker, Footer } from "./components";
 import { TitleComponent } from "./components/Title/TitleComponent.jsx";
 import styles from "./App.module.css";
-import { fetchData } from "./api";
+import { fetchData, fetchTrend } from "./api";
 
 import coronaImage from "./images/covid.png";
+import juntosImage from "./images/juntos.png";
 
 class App extends React.Component {
   state = {
     data: {},
     country: "",
+    trend: [],
   };
 
   async componentDidMount() {
@@ -20,12 +22,12 @@ class App extends React.Component {
 
   handleCountryChange = async (country) => {
     const fetchedData = await fetchData(country);
-
-    this.setState({ data: fetchedData, country: country });
+    const fetchedTrend = await fetchTrend(country);
+    this.setState({ data: fetchedData, country: country, trend: fetchedTrend });
   };
 
   render() {
-    const { data, country } = this.state;
+    const { data, country, trend } = this.state;
     return (
       <div>
         <TitleComponent title="COVID-19 Tracker React.js App" />
@@ -33,9 +35,14 @@ class App extends React.Component {
           <img className={styles.image} src={coronaImage} alt="Covid 19" />
           <CountryPicker handleCountryChange={this.handleCountryChange} />
           <Cards data={data} />
-
-          <Chart data={data} country={country} />
+          <Chart data={data} country={country} trend={trend} />
+          <img
+            className={styles.imageJuntos}
+            src={juntosImage}
+            alt="Juntos Saldremos Adelante"
+          />
         </div>
+
         <div>
           <Footer className={styles.footer} />
         </div>
