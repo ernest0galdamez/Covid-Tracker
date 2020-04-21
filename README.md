@@ -7,6 +7,8 @@ API used: https://covid19.mathdro.id/api
 
 ## Demo
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aca27b89-db3f-44e6-962c-4d150e1b89eb/deploy-status)](https://app.netlify.com/sites/inspiring-neumann-8b3ed3/deploys)
+
 ### https://inspiring-neumann-8b3ed3.netlify.app/
 
 Check out the live demo in the link.
