@@ -102,10 +102,10 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             md={4}
             style={{ textAlign: "center", color: "#008000" }}
           >
-            <h2>Tasa de Mortalidad</h2>
+            <h2>Tasa de Recuperación</h2>
             <CircularProgressbar
-              value={fatalityRate.toFixed(2)}
-              text={`${fatalityRate.toFixed(2)}%`}
+              value={recoveryRate.toFixed(2)}
+              text={`${recoveryRate.toFixed(2)}%`}
               strokeWidth={10}
               styles={buildStyles({
                 pathColor: "#008000",
@@ -117,12 +117,15 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             item
             xs={12}
             md={4}
-            style={{ textAlign: "center", color: "#ff0000" }}
+            style={{
+              textAlign: "center",
+              color: "#ff0000",
+            }}
           >
-            <h2>Tasa de Recuperación</h2>
+            <h2>Tasa de Mortalidad</h2>
             <CircularProgressbar
-              value={recoveryRate.toFixed(2)}
-              text={`${recoveryRate.toFixed(2)}%`}
+              value={fatalityRate.toFixed(2)}
+              text={`${fatalityRate.toFixed(2)}%`}
               strokeWidth={10}
               styles={buildStyles({
                 pathColor: "#ff0000",
