@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { fetchCountries } from "../../api";
 import { NativeSelect, FormControl } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 import styles from "./CountryPicker.module.css";
 
 const CountryPicker = ({ handleCountryChange }) => {
+  const { t } = useTranslation();
   const [fetchedCountries, setFetchedCountries] = useState([]);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const CountryPicker = ({ handleCountryChange }) => {
           defaultValue=""
           onChange={(e) => handleCountryChange(e.target.value)}
         >
-          <option value="">Seleccione su País</option>
+          <option value="">{t("countrySelect.label")}</option>
           {fetchedCountries.map((country, i) => (
             <option key={i} value={country}>
               {country}

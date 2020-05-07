@@ -4,10 +4,13 @@ import CountUp from "react-countup";
 import cx from "classnames";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { useTranslation } from "react-i18next";
 
 import styles from "./Cards.module.css";
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
+  const { t } = useTranslation();
+
   if (!confirmed) {
     return "Cargando...";
   }
@@ -26,7 +29,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
         >
           <CardContent>
             <Typography color="textPrimary" gutterBottom>
-              Infectados
+              {t("infected.label")}
             </Typography>
             <Typography variant="h5">
               <CountUp
@@ -37,7 +40,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               />
             </Typography>
             <Typography variant="body2">
-              Numero de Infectados con COVID-19
+              {t("infectadosNumber.label")}
             </Typography>
           </CardContent>
         </Grid>
@@ -50,7 +53,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
         >
           <CardContent>
             <Typography color="textPrimary" gutterBottom>
-              Recuperados
+              {t("recovered.label")}
             </Typography>
             <Typography variant="h5">
               <CountUp
@@ -61,7 +64,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               />
             </Typography>
             <Typography variant="body2">
-              Numero de Recuperados de COVID-19
+              {t("recoveredNumber.label")}
             </Typography>
           </CardContent>
         </Grid>
@@ -74,7 +77,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
         >
           <CardContent>
             <Typography color="textPrimary" gutterBottom>
-              Fallecidos
+              {t("deaths.label")}
             </Typography>
             <Typography variant="h5">
               <CountUp
@@ -84,14 +87,12 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                 separator=","
               />
             </Typography>
-            <Typography variant="body2">
-              Numero de Fallecidos por COVID-19
-            </Typography>
+            <Typography variant="body2">{t("deathsNumber.label")}</Typography>
           </CardContent>
         </Grid>
       </Grid>
       <Typography color="textSecondary" style={{ paddingTop: 2 + "em" }}>
-        Última Actualización:
+        {t("lastUpdate.label")}
         {new Date(lastUpdate).toTimeString()}
       </Typography>
       <div className={styles.progressBarfont}>
@@ -102,7 +103,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             md={4}
             style={{ textAlign: "center", color: "#008000" }}
           >
-            <h2>Tasa de Recuperación</h2>
+            <h2> {t("recoveryRate.label")}</h2>
             <CircularProgressbar
               value={recoveryRate.toFixed(2)}
               text={`${recoveryRate.toFixed(2)}%`}
@@ -122,7 +123,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               color: "#ff0000",
             }}
           >
-            <h2>Tasa de Mortalidad</h2>
+            <h2>{t("mortalityRate.label")}</h2>
             <CircularProgressbar
               value={fatalityRate.toFixed(2)}
               text={`${fatalityRate.toFixed(2)}%`}

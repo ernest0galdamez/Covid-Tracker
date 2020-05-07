@@ -4,6 +4,7 @@ import { Line, Bar, defaults } from "react-chartjs-2";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import { Grid, Typography } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 import styles from "./Chart.module.css";
 
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
   if (trend === undefined) {
     trend = {};
@@ -44,13 +46,13 @@ const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
           datasets: [
             {
               data: dailyData.map(({ confirmed }) => confirmed),
-              label: "Infectados",
+              label: t("infected.label"),
               borderColor: "#3333ff",
               fill: true,
             },
             {
               data: dailyData.map(({ deaths }) => deaths),
-              label: "Fallecidos",
+              label: t("deaths.label"),
               borderColor: "red",
               backgroundColor: "rgba(255,0,0,0.5)",
               fill: true,
@@ -63,7 +65,7 @@ const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
           responsive: true,
           title: {
             display: true,
-            text: `Resumen de casos Global`,
+            text: t("casesSummary"),
             defaultFontSize: 12,
             responsive: true,
           },
@@ -74,10 +76,10 @@ const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
   const barChart = confirmed ? (
     <Bar
       data={{
-        labels: ["Infectados", "Recuperados", "Fallecidos"],
+        labels: [t("infected.label"), t("recovered.label"), t("deaths.label")],
         datasets: [
           {
-            label: "Personas",
+            label: t("people.label"),
             backgroundColor: ["#3333ff", "#008000", "#ff0000"],
             data: [confirmed.value, recovered.value, deaths.value],
           },
@@ -88,7 +90,7 @@ const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
         legend: { display: false },
         title: {
           display: true,
-          text: `Estado actual en ${country}`,
+          text: t("currentState.label") + `${country}`,
           defaultFontSize: 12,
           responsive: true,
         },
@@ -104,13 +106,13 @@ const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
         datasets: [
           {
             data: casesTrend.map(({ cases }) => cases),
-            label: "Infectados",
+            label: t("infected.label"),
             borderColor: "#3333ff",
             fill: false,
           },
           {
             data: recoveredTrend.map(({ cases }) => cases),
-            label: "Recuperados",
+            label: t("recovered.label"),
             borderColor: "#008000",
             fill: false,
           },
@@ -122,7 +124,7 @@ const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
         responsive: true,
         title: {
           display: true,
-          text: `Propagación Últimos 45 días`,
+          text: t("propagation.label"),
           defaultFontSize: 12,
           responsive: true,
         },
@@ -155,8 +157,7 @@ const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
                     {"\n"}
                     {lineTrend}
                     <Typography color="textSecondary">
-                      Los gráficos anteriores se actualizan después del cierre
-                      del día en GMT + 0
+                      {t("chartsUpdated.label")}
                     </Typography>
                   </div>
                 </Paper>

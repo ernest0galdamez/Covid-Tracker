@@ -1,9 +1,16 @@
-import React from "react";
+import React, { Suspense } from "react";
 
-import { Cards, Chart, CountryPicker, Footer } from "./components";
+import {
+  Cards,
+  Chart,
+  CountryPicker,
+  Footer,
+  LanguageSelector,
+} from "./components";
 import { TitleComponent } from "./components/Title/TitleComponent.jsx";
 import styles from "./App.module.css";
 import { fetchData, fetchTrend } from "./api";
+import "./i18n";
 
 import coronaImage from "./images/covid.png";
 import juntosImage from "./images/juntos.png";
@@ -32,10 +39,13 @@ class App extends React.Component {
       <div>
         <TitleComponent title="COVID-19 Tracker React.js App" />
         <div className={styles.container}>
-          <img className={styles.image} src={coronaImage} alt="Covid 19" />
-          <CountryPicker handleCountryChange={this.handleCountryChange} />
-          <Cards data={data} />
-          <Chart data={data} country={country} trend={trend} />
+          <Suspense fallback={null}>
+            <LanguageSelector className={styles.language} />
+            <img className={styles.image} src={coronaImage} alt="Covid 19" />
+            <CountryPicker handleCountryChange={this.handleCountryChange} />
+            <Cards data={data} />
+            <Chart data={data} country={country} trend={trend} />
+          </Suspense>
           <img
             className={styles.imageJuntos}
             src={juntosImage}

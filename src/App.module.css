@@ -37,3 +37,7 @@ body {
   background-color: tomato;
   color: white;
 }
+
+.language {
+  font: Arial;
+}

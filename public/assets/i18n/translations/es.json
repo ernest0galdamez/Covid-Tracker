@@ -1,0 +1,17 @@
+{
+  "infected.label": "Infectados",
+  "infectadosNumber.label": "Numero de Infectados con COVID-19",
+  "recovered.label": "Recuperados",
+  "recoveredNumber.label": "Numero de Infectados con COVID-19",
+  "deaths.label": "Fallecidos",
+  "deathsNumber.label": "Numero de Infectados con COVID-19",
+  "lastUpdate.label": "Última Actualización:",
+  "recoveryRate.label": "Tasa de Recuperación",
+  "mortalityRate.label": "Tasa de Mortalidad",
+  "countrySelect.label": "Seleccione su País",
+  "casesSummary": "Resumen Global",
+  "people.label": "Personas",
+  "currentState.label": "Estado actual en ",
+  "propagation.label": "Propagación Últimos 45 días",
+  "chartsUpdated.label": "Los gráficos se actualizan después del cierre del día en GMT + 0"
+}
