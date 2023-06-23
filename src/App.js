@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 
 import {
   Cards,
-  Chart,
   CountryPicker,
   Footer,
   LanguageSelector,
@@ -34,7 +33,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { data, country, trend } = this.state;
+    const { data } = this.state;
     return (
       <div>
         <TitleComponent title="COVID-19 Tracker React.js App" />
