@@ -1,6 +1,7 @@
 import axios from "axios";
+import countryList from "../assets/countryList.json"
 
-const url = "https://covid19.mathdro.id/api";
+const url = "https://covid-api.com/api";
 const trendUrl = "https://corona.lmao.ninja/v2/historical";
 
 export const fetchData = async (country) => {
@@ -82,7 +83,7 @@ export const fetchTrend = async (country) => {
 
 export const fetchDailyData = async () => {
   try {
-    const { data } = await axios.get(`${url}/daily`);
+    const { data } = await axios.get(`${url}/reports/total?date=2020-03-14`);
     const modifiedData = data.map((dailyData) => ({
       confirmed: dailyData.confirmed.total,
       deaths: dailyData.deaths.total,
@@ -95,12 +96,5 @@ export const fetchDailyData = async () => {
 };
 
 export const fetchCountries = async () => {
-  try {
-    const {
-      data: { countries },
-    } = await axios.get(`${url}/countries`);
-    return countries.map((country) => country.name);
-  } catch (error) {
-    console.log(error);
-  }
+    return countryList.map((country) => country.name);
 };

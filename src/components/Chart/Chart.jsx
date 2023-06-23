@@ -39,7 +39,7 @@ const Chart = ({ data: { confirmed, deaths, recovered }, country, trend }) => {
   }, []);
 
   const lineChart =
-    dailyData.lenght !== 0 ? (
+    dailyData.length !== 0 ? (
       <Line
         data={{
           labels: dailyData.map(({ date }) => date),
