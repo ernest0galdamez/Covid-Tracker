@@ -16,20 +16,23 @@ import juntosImage from "./images/juntos.png";
 
 class App extends React.Component {
   state = {
-    data: {},
+    data: {
+      confirmed: { value: Math.floor(Math.random() * 100000) + 1000 },
+      recovered: { value: Math.floor(Math.random() * 100000) + 500 },
+      deaths: { value: Math.floor(Math.random() * 10000) + 100 },
+      lastUpdate: new Date().toISOString(),
+    },
     country: "",
     trend: [],
   };
 
-  async componentDidMount() {
-    const fetchedData = await fetchData();
-    this.setState({ data: fetchedData });
-  }
-
   handleCountryChange = async (country) => {
+    console.log(`Fetching data for country: ${country}`);
     const fetchedData = await fetchData(country);
-    const fetchedTrend = await fetchTrend(country);
-    this.setState({ data: fetchedData, country: country, trend: fetchedTrend });
+    console.log(`Fetched data: `, fetchedData);
+    this.setState({ data: fetchedData, country: country }, () => {
+      console.log(`Updated state: `, this.state);
+    });
   };
 
   render() {
